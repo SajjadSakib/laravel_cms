@@ -100,22 +100,17 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true"
                     aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
+                    <span>Users</span>
                 </a>
-                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
+                <div id="collapseUsers" class="collapse show" aria-labelledby="headingPages"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item active" href="blank.html">Blank Page</a>
+                        <a class="collapse-item" href="/admin/user">All Users</a>
+                        <a class="collapse-item" href="/admin/user/create">Add User</a>
+                        <a class="collapse-item" href="blank.html">Blank Page</a>
                     </div>
                 </div>
             </li>
@@ -325,7 +320,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="{{Auth::user()->photo ? '/images/' . Auth::user()->photo->name : 'https://via.placeholder.com/200'}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -357,7 +352,7 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
+                    @yield('container')
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">Blank Page</h1>
                     @yield('content')
@@ -394,6 +389,8 @@
         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <form action="{{ route('logout') }}" method="post">
+                    @csrf
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
@@ -403,8 +400,10 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
+                    <input type="submit" name="submit" value="Logout" class="btn btn-primary">
+
                 </div>
+                </form>
             </div>
         </div>
     </div>
