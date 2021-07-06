@@ -17,6 +17,8 @@ mix.js('resources/js/app.js', 'public/js')
         'resources/css/all.min.css',
         'resources/css/fontawesome.min.css',
         'resources/css/sb-admin-2.min.css',
+        'resources/css/bootstrap.min.css',
+        'resources/css/blog-home.css',
     ],'public/css/lib.css')
     .scripts([
         'resources/js/jquery.min.js',

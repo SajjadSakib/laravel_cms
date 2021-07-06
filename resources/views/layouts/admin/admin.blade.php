@@ -21,7 +21,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" style="padding-top: 0px">
 
     <!-- Page Wrapper -->
     <div id="wrapper">

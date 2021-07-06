@@ -30,4 +30,6 @@ Route::group(['middleware'=>'admin'],function (){
 
 });
 
-
+Route::get('/blog/home',function (){
+    return view('blog-home.index');
+});
